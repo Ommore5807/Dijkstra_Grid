@@ -1,0 +1,35 @@
+map = false(4,6);
+map (1:5, 6) = true;
+
+start_coords = [2, 1];
+dest_coords  = [3, 6];
+
+%generate random path
+%{sx = randperm(5);
+%sy = randperm(5);
+%dx = randperm(5);
+%dy = randperm(5);
+%start_coords = [sx, sy];
+%dest_coords  = [dx, dy];
+
+for i = 1:7
+    for j = 1: 7
+        map(i, j) = true; % Mark the current position in the map as true
+    end
+end
+map(2,3) = true;
+map(2,4) = true;
+map(4,4) = true;
+map()
+%map (sx(1):sy(1), dy(1)) = true;
+%map (dy(1):dy(1), dy(3):dy(4)) = true;
+%map (sx(1):sy(1), sy(1)) = true;
+%map (sx(1):sy(1), sy(1)) = true;
+%
+close all;
+
+%Dijkstra Algorithm
+[route, numExpanded] = DijkstraGrid (map, start_coords, dest_coords);
+
+%Astar Algorithm
+%[route, numExpanded] = AStarGrid (map, start_coords, dest_coords);
